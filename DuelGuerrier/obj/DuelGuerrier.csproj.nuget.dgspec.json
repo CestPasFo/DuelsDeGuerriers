@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Utilisateur\\source\\repos\\DuelGuerrier\\DuelGuerrier\\DuelGuerrier.csproj": {}
+    "C:\\Users\\Utilisateur\\Desktop\\DuelGuerrier\\DuelsDeGuerriers\\DuelGuerrier\\DuelGuerrier.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Utilisateur\\source\\repos\\DuelGuerrier\\DuelGuerrier\\DuelGuerrier.csproj": {
+    "C:\\Users\\Utilisateur\\Desktop\\DuelGuerrier\\DuelsDeGuerriers\\DuelGuerrier\\DuelGuerrier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Utilisateur\\source\\repos\\DuelGuerrier\\DuelGuerrier\\DuelGuerrier.csproj",
+        "projectUniqueName": "C:\\Users\\Utilisateur\\Desktop\\DuelGuerrier\\DuelsDeGuerriers\\DuelGuerrier\\DuelGuerrier.csproj",
         "projectName": "DuelGuerrier",
-        "projectPath": "C:\\Users\\Utilisateur\\source\\repos\\DuelGuerrier\\DuelGuerrier\\DuelGuerrier.csproj",
+        "projectPath": "C:\\Users\\Utilisateur\\Desktop\\DuelGuerrier\\DuelsDeGuerriers\\DuelGuerrier\\DuelGuerrier.csproj",
         "packagesPath": "C:\\Users\\Utilisateur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Utilisateur\\source\\repos\\DuelGuerrier\\DuelGuerrier\\obj\\",
+        "outputPath": "C:\\Users\\Utilisateur\\Desktop\\DuelGuerrier\\DuelsDeGuerriers\\DuelGuerrier\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Utilisateur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

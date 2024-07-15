@@ -1,4 +1,9 @@
 ﻿using DuelGuerrier.Classe;
+using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Security;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
+using System.Security.Cryptography;
 using System.Xml.Linq;
 
 #region Brief combat guerrier
@@ -18,6 +23,65 @@ listPJ.Add(Joueur3);
 listPJ.Add(Joueur4);
 listPJ.Add(Joueur5);
 listPJ.Add(Joueur6);
+
+#region Connect DataBase
+void connect()
+{
+    MySqlConnection connect = new MySqlConnection("database=guerrier_fight; server=localhost; user id=root");
+        try
+        {
+        connect.Open();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(" ! Connexion à la BDD réussi !");
+        Console.ForegroundColor = ConsoleColor.White;
+        MySqlCommand myCommand = new MySqlCommand("select * from guerrier", connect);
+        MySqlDataReader myReader = myCommand.ExecuteReader();
+        while (myReader.Read())
+        {
+            Console.WriteLine("Nom : " + myReader["name"].ToString());
+            Console.WriteLine(myReader["pv"].ToString() + " HP");
+            Console.WriteLine(myReader["nbDeDegats"].ToString() + " attaque(s)");
+            Console.WriteLine(myReader["ptBouclier"].ToString() + " de bouclier");
+            Console.WriteLine("-------------------------------------");
+        }
+        Thread.Sleep(10000);
+        Console.Clear();
+        }
+        catch (Exception)
+        {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("! Connexion à la BDD échouée !");
+        Console.ForegroundColor = ConsoleColor.White;
+        connect.Close();
+        }     
+}
+#endregion
+
+#region creation de perso + add BDD
+void createChar()
+{
+    //Connection a la base de donnée
+    string connect = ("database=guerrier_fight; server=localhost; user id=root");
+    MySqlConnection conn = new MySqlConnection(connect);
+    try
+    {
+        Console.WriteLine("Connection à la BDD...");
+        conn.Open();
+
+        string requete = "INSERT INTO guerrier (pv, nbDeDegats, ptBouclier, name) VALUES (35, 2, 0, 'Mohg')";//la requette
+        MySqlCommand cmd = new MySqlCommand(requete, conn);//combine la requette et l'adress
+        cmd.ExecuteNonQuery();//envoie de la requette
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    }
+    conn.Close();
+    Console.WriteLine("Votre personnage a été ajouté.");
+    Thread.Sleep(5000);
+    Console.Clear();
+}
+#endregion
 
 #region Affiche menu
 static void AffichageMenu()
@@ -44,7 +108,6 @@ static void create(List<Guerrier> listPJ)
     int pntVie;
     int nbAttack;
     string nom;
-    int bouclier;
     Console.Clear();
     Console.WriteLine(" Entrez le nom de votre personnage : ");
     nom = Console.ReadLine();
@@ -52,7 +115,6 @@ static void create(List<Guerrier> listPJ)
     Console.WriteLine(" Vous avez : " + pntVie + " points de vie");
     nbAttack = aleatoire.Next(1, 3);
     Console.WriteLine(" Votre personnage peut attaquer : " + nbAttack + " fois");
-    bouclier = 0;
     Guerrier PJG = new Guerrier(pntVie, nbAttack, nom, 0);
     listPJ.Add(PJG);
 }
@@ -105,6 +167,13 @@ static void createPJ(List<Guerrier> listPJ)
 }
 #endregion
 
-//createPJ(listPJ);
+//Connexion à la BDD
+connect();
+
+//Creation d'un personnage
+createChar();
+
+
+//Lancement de la methode de combat
 Guerrier.Fight(Joueur4, Joueur6);
 #endregion

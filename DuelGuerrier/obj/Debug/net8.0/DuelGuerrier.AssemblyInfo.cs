@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DuelGuerrier")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19ab42641ea055cd6731d5b70ca5294593ef3e61")]
 [assembly: System.Reflection.AssemblyProductAttribute("DuelGuerrier")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DuelGuerrier")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
