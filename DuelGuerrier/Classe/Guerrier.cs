@@ -105,7 +105,7 @@ namespace DuelGuerrier.Classe
                     {
                         dmgJ1 = Joueur1.Attack();
                         Joueur2.Pdv -= Joueur2.TakeDamage(Joueur2, dmgJ1, Joueur2.Bouclier);
-                        Joueur2.Etat(Joueur1, dmgJ1, Joueur2);
+                        Joueur2.Etat(Joueur2, dmgJ1, Joueur1);
                     }
                     Console.ForegroundColor = ConsoleColor.White;
                 }

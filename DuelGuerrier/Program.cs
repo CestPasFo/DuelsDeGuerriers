@@ -105,6 +105,6 @@ static void createPJ(List<Guerrier> listPJ)
 }
 #endregion
 
-createPJ(listPJ);
+//createPJ(listPJ);
 Guerrier.Fight(Joueur4, Joueur6);
 #endregion
